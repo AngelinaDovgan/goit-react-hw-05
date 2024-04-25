@@ -4,7 +4,7 @@ import { fetchMovies } from "../../../movies-api";
 import MovieFilter from "../../components/MovieFilter/MovieFilter";
 import MovieList from "../../components/MovieList/MovieList";
 import Loader from "../../components/Loader/Loader";
-import { ErrorMessage } from "formik";
+import ErrorMessage from "../../components/EM/EM";
 
 export default function MoviesPage() {
     const [movies, setMovies] = useState([]);
