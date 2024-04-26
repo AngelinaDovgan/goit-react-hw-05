@@ -1,9 +1,10 @@
 import axios from "axios";
+
 axios.defaults.baseURL = "https://api.themoviedb.org";
 
 // ФІЛЬМИ - для пошуку
 export const fetchMovies = async (searchQuery, currentPage) => {
-    const url = `/3/search/movie?`;
+    const url = '/3/search/movie?';
 
     const options = {
         headers: {
