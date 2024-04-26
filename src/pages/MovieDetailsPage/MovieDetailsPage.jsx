@@ -10,7 +10,7 @@ import MovieReviews from "../../components/MovieReviews/MovieReviews";
 
 
 export default function MovieDetailsPage() {
-    const { id } = useParams();
+    const { movieId } = useParams();
     const [movieDetails, setMovieDetails] = useState({
         title: "",
         poster_path: "",
@@ -18,6 +18,8 @@ export default function MovieDetailsPage() {
         overview: "",
         genres: []
     });
+
+
     
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(false);
@@ -28,12 +30,12 @@ export default function MovieDetailsPage() {
     const backLinkHref = useRef(location.state ?? "/movies")
 
     useEffect(() => {
-        if (!id) return;
+        // if (!movieId) return;
 
         async function fetchDetails() {
             try {
                 setIsLoading(true);
-                const details = await fetchMovieDetails(id);
+                const details = await fetchMovieDetails(movieId);
                 setMovieDetails(details);
             } catch (error) {
                 setError(error);
@@ -42,7 +44,8 @@ export default function MovieDetailsPage() {
             }
         }
         fetchDetails();
-    }, [id])
+    }, [movieId])
+
 
     const { title, poster_path, vote_average, overview, genres } = movieDetails;
 
@@ -92,17 +95,17 @@ export default function MovieDetailsPage() {
                 <h4>Additional information</h4>
                 <ul>
                     <li>
-                        <Link to={`/movies/${id}/cast`} onClick={toggleCast}>Cast</Link>
+                        <Link to={`/movies/${movieId}/cast`} onClick={toggleCast}>Cast</Link>
                     </li>
                     <li>
-                        <Link to={`/movies/${id}/reviews`} onClick={toggleReviews}>Review</Link>
+                        <Link to={`/movies/${movieId}/reviews`} onClick={toggleReviews}>Review</Link>
                     </li>
                 </ul>
                 <Suspense>
                     <Outlet />
                 </Suspense>
-                {showCast && <MovieCast movieId={id} />}
-                {showReviews && <MovieReviews movieId={id} />}
+                {showCast && <MovieCast movieId={movieId} />}
+                {showReviews && <MovieReviews movieId={movieId} />}
             </main>
         </>
     )
