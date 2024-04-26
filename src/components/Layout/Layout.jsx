@@ -5,11 +5,11 @@ export default function Layout({ children }) {
     return (
         <div>
             <header>
- <Navigation />
+                <Navigation />
+            </header>    
 <Suspense>
 {children}
 </Suspense>
-</header>
 </div>
 )
 }
