@@ -27,7 +27,7 @@ export default function MoviesPage() {
                         setIsEmpty(true);
                         return;
                     }
-                    setMovieReviews((prevMovies) => {
+                    setMovies((prevMovies) => {
                         return [...prevMovies, ...results];
                 });
                 } catch (error) {
@@ -53,7 +53,7 @@ export default function MoviesPage() {
         <div>
             <p>Movies Page</p>
             <MovieFilter onSearch={handleSearch} />
-            {movies.length > 0 && <MovieList />}
+            {movies.length > 0 && <MovieList movies={movies} />}
             {isLoading && <Loader />}
             {error && <ErrorMessage />}
             {isEmpty &&  <p>Sorry! Here is no movies!</p>}
