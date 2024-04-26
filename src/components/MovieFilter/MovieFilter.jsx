@@ -56,7 +56,7 @@ export default function MovieFilter({ onSearch }) {
                     <Field
                         type="text"
                         name="query"
-                        placeholder="Type here..."
+                        placeholder="Search movie..."
                         autoComplete="off"
                         autoFocus
                     />
