@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchMovieCast } from "../../../movies-api";
 import ErrorMessage from '../EM/EM';
 import Loader from "../Loader/Loader";
+import css from './MovieCast.module.css';
 
 export default function MovieCast({ movieId }) {
     
@@ -54,11 +55,11 @@ export default function MovieCast({ movieId }) {
         <div>
             {isloading && <Loader />}
             {error && <ErrorMessage/> }
-            <ul>
+            <ul className={css.list}>
               {cast.map((actor) => (
                   <li key={`${actor.id}`}>
                       
-                      <img src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`} alt={actor.name} />
+                      <img src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`} alt={actor.name} className={css.img} />
                       
         <p>Character: {actor.character}</p>
     </li>

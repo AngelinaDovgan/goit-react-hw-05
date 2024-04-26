@@ -1,0 +1,19 @@
+.text {
+    text-align: left;
+    list-style: none;
+}
+
+.img {
+    display: block;
+    align-items: left;
+    height: 500px;
+}
+
+.icon {
+    fill: green;
+}
+
+.list {
+    color: black;
+    
+}

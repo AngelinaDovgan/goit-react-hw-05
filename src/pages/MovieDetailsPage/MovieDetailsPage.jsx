@@ -7,6 +7,8 @@ import ErrorMessage from "../../components/EM/EM";
 import { Link } from "react-router-dom";
 import MovieCast from "../../components/MovieCast/MovieCast";
 import MovieReviews from "../../components/MovieReviews/MovieReviews";
+import css from './MovieDetailsPage.module.css';
+import { AiFillCaretRight } from "react-icons/ai";
 
 
 export default function MovieDetailsPage() {
@@ -77,32 +79,32 @@ export default function MovieDetailsPage() {
                             defaultImg
                     } alt={title} /> */}
 
-                    <img src={`https://image.tmdb.org/t/p/w500/${poster_path}` } alt={title} />
+                    <img src={`https://image.tmdb.org/t/p/w500/${poster_path}` } alt={title} className={css.img} />
                    
                 </div>
                 <div>
-                    <h2>{title}</h2>
-                    <p>User Score: {vote_average}</p>
-                    <h3>Overview</h3>
-                    <p>{overview}</p>
-                    <h3>Genres</h3>
+                    <h2 className={css.text}>{title}</h2>
+                    <p className={css.text}>User Score: {vote_average}</p>
+                    <h2 className={css.text}>Overview</h2>
+                    <p className={css.text}>{overview}</p>
+                    <h2 className={css.text}>Genres</h2>
                     {genres && genres.length > 0 ? (
-                        <ul>
+                        <ul className={css.text}> 
                             {genres.map(genre =>
-                                <li key={genre.id}>{genre.name}</li>
+                            <li key={genre.id}>  <AiFillCaretRight className={css.icon} /> {genre.name} </li>
                             )}
                         </ul>
                     ) : (
                         <p>Here is no information</p>
                     )}
                 </div>
-                <h4>Additional information</h4>
-                <ul>
-                    <li>
-                        <Link to={`/movies/${movieId}/cast`} onClick={toggleCast}>Cast</Link>
+                <h2 className={css.text}>Additional information</h2>
+                <ul className={css.text}>
+                    <li className={css.list}>
+                       <AiFillCaretRight className={css.icon} /> <Link to={`/movies/${movieId}/cast`} onClick={toggleCast}>Cast</Link>
                     </li>
-                    <li>
-                        <Link to={`/movies/${movieId}/reviews`} onClick={toggleReviews}>Review</Link>
+                    <li className={css.list}>
+                      <AiFillCaretRight className={css.icon} />  <Link to={`/movies/${movieId}/reviews`} onClick={toggleReviews}>Review</Link>
                     </li>
                 </ul>
                 <Suspense>

@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import MovieList from "../../components/MovieList/MovieList";
 import LoadMoreBtn from "../../components/LoadMoreBtn/LoadMoreBtn";
-
 import { fetchTrendMovies } from "../../../movies-api";
 import Loader from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/EM/EM";
+import css from './HomePage.module.css';
+import { SiThemoviedatabase } from "react-icons/si";
 
 export default function HomePage() {
   const [movies, setMovies] = useState([]);
@@ -45,8 +46,12 @@ export default function HomePage() {
 
 
     return (
-        <div>
-            <p>Home Page </p>
+      <div>
+        <div className={css.cont}>
+          <SiThemoviedatabase className={css.icon} /> 
+        </div>
+       
+        <h2 className={css.title}>Home Page </h2>
             {movies.length > 0 && <MovieList movies={movies}/> }
             {isloading && <Loader/>}
             {error && <ErrorMessage/>}
