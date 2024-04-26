@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchMovieReviews } from "../../../movies-api";
+import { fetchMovieReview } from "../../../movies-api";
 import Loader from "../Loader/Loader";
 import ErrorMessage from "../EM/EM";
 
@@ -16,7 +16,7 @@ export default function MovieReviews({ movieId }) {
             const getReview = async () => {
                 setIsLoading(true);
                 try {
-                    const reviews = await fetchMovieReviews(movieId);
+                    const reviews = await fetchMovieReview(movieId);
                     if (reviews.length === 0) {
                         setIsEmpty(true);
                         return;
