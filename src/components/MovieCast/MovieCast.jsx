@@ -38,8 +38,10 @@ export default function MovieCast({ movieId }) {
             {error && <ErrorMessage/> }
             <ul>
               {cast.map((actor) => (
-    <li key={`${actor.id}`}>
-        <img src={actor.profile_path} alt={actor.name} />
+                  <li key={`${actor.id}`}>
+                      
+                      <img src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`} alt={actor.name} />
+                      
         <p>Character: {actor.character}</p>
     </li>
 ))}
