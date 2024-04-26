@@ -13,24 +13,42 @@ export default function MovieCast({ movieId }) {
      useEffect(() => {
             if (!movieId) return;
 
-            const getCast = async () => {
-                setIsLoading(true);
-                try {
-                    const movcasts = await fetchMovieCast(movieId);
-                    if (movcasts.length === 0) {
-                        setIsEmpty(true);
-                        return;
-                    }
-                    setCast(movcasts);
-                } catch (error) {
-                    setError(true);
-                } finally {
-                    setIsLoading(false);
-                }
-            }
+    //         const getCast = async () => {
+    //             setIsLoading(true);
+    //             try {
+    //                 const movcasts = await fetchMovieCast(movieId);
+    //                 if (movcasts.length === 0) {
+    //                     setIsEmpty(true);
+    //                     return;
+    //                 }
+    //                 setCast(movcasts);
+    //             } catch (error) {
+    //                 setError(true);
+    //             } finally {
+    //                 setIsLoading(false);
+    //             }
+    //         }
     
-            getCast();
-        }, [movieId])
+    //         getCast();
+    //  }, [movieId])
+    
+        async function fetchCastData() {
+            try {
+                setIsLoading(true);
+                const details = await fetchMovieCast(movieId);
+                if (details.length === 0) {
+                    setIsEmpty(true);
+                    return;
+                }
+                setCast(details);
+            } catch (error) {
+                setError(error);
+            } finally {
+                setIsLoading(false);
+            }
+        }
+        fetchCastData();
+    }, [movieId])
         
     return (
         <div>
