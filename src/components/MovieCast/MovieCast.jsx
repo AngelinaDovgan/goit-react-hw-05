@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchMovieCast } from "../../../movies-api";
 import ErrorMessage from '../EM/EM';
+import Loader from "../Loader/Loader";
 
 export default function MovieCast({ movieId }) {
     
