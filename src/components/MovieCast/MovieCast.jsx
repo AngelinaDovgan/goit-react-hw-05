@@ -36,13 +36,12 @@ export default function MovieCast({ movieId }) {
             {isloading && <Loader />}
             {error && <ErrorMessage/> }
             <ul>
-                {cast.map((actor) => {
-                    <li key={`${actor.id}`}>
-                        <img src={actor.profile_path} alt={actor.name} />
-                        <p>Character: {actor.character}</p>
-                    </li>
-                }
-                )}
+              {cast.map((actor) => (
+    <li key={`${actor.id}`}>
+        <img src={actor.profile_path} alt={actor.name} />
+        <p>Character: {actor.character}</p>
+    </li>
+))}
             </ul>
             {isEmpty && <h3>Ooops! Here is nothing to see!</h3>}
         </div>

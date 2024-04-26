@@ -37,15 +37,12 @@ export default function MovieReviews({ movieId }) {
             {isloading && <Loader />}
             {error && <ErrorMessage/>}
             <ul>
-                {movieReviews.map((item) => {
+                {movieReviews.map((item) => (
                     <li key={item.id}>
-                        <p>
-                            Author: {item.author}
-                        </p>
+                        <p>Author: {item.author}</p>
                         <p>{item.content}</p>
                     </li>
-                }
-                )}
+                ))}
             </ul>
             {isEmpty && <h3>Ooops! Here is nothing to see!</h3>}
         </div>

@@ -13,7 +13,6 @@ export default function MovieList({ movies }) {
                         </Link>
                     </li>
                 )
-                
                 )}
             </ul>
         </div>
