@@ -35,6 +35,7 @@
 
 import { Form, Field, Formik } from "formik";
 import toast, { Toaster } from "react-hot-toast";
+import css from './MovieFilter.module.css';
 
 export default function MovieFilter({ onSearch }) {
     return (
@@ -60,7 +61,7 @@ export default function MovieFilter({ onSearch }) {
                         autoComplete="off"
                         autoFocus
                     />
-                    <button type="submit">Click to start!</button>
+                    <button type="submit" className={css.btn}>Click to start!</button>
                 </Form>
             </Formik>
         </div>
