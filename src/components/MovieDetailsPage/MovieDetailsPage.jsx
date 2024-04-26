@@ -21,11 +21,11 @@ export default function MovieDetailsPage() {
     
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(false);
-    const location = useLocation();
     const [showCast, setShowCast] = useState(false);
     const [showReviews, setShowReviews] = useState(false);
 
-    const backLink = useRef(location.state ?? "/movies")
+    const location = useLocation();
+    const backLinkHref = useRef(location.state ?? "/movies")
 
     useEffect(() => {
         if (!id) return;
@@ -58,7 +58,7 @@ export default function MovieDetailsPage() {
     const img = "https://dl-media.viber.com/10/share/2/long/vibes/icon/image/0x0/95e0/5688fdffb84ff8bed4240bcf3ec5ac81ce591d9fa9558a3a968c630eaba195e0.jpg";
     return (
         <div>
-            <BackLink to={backLink.current}></BackLink>
+            <BackLink to={backLinkHref.current}></BackLink>
             {isLoading && <Loader />}
             {error && <ErrorMessage />}
             <img src={poster_path ? (`https://image.tmdb.org/t/p/w500/${poster_path}`) : img} alt={title} />
@@ -80,7 +80,7 @@ export default function MovieDetailsPage() {
                 <h2>Additional Information</h2>
                 <ul>
                     <li>
-                        <Link to ={`/movies/${id}/cast`} onClick={ToggleCast}>Cast</Link>
+                        <Link to ={`/movies/${id}/cast`} onClick={ToggleCast} >Cast</Link>
                     </li>
                     <li>
                         <Link to ={`/movies/${id}/reviews`} onClick={ToggleReviews}>Reviews</Link>
