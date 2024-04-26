@@ -1,0 +1,12 @@
+.btn {
+    background-color: green;
+    color: white;
+    font-weight: 700;
+    padding: 15px 100px;
+    max-width: 100%;
+    border: transparent;
+}
+
+.btn:hover {
+    background-color: darkgreen;
+}
