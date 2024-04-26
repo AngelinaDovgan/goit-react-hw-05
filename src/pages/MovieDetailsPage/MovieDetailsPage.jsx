@@ -29,13 +29,14 @@ export default function MovieDetailsPage() {
 
     useEffect(() => {
         if (!id) return;
+
         async function fetchDetails() {
             try {
                 setIsLoading(true);
                 const details = await fetchMovieDetails(id);
                 setMovieDetails(details);
             } catch (error) {
-                setError(true);
+                setError(error);
             } finally {
                 setIsLoading(false);
             }
@@ -45,55 +46,64 @@ export default function MovieDetailsPage() {
 
     const { title, poster_path, vote_average, overview, genres } = movieDetails;
 
-    const ToggleCast = () => {
+    const toggleCast = () => {
         setShowCast(true);
         setShowReviews(false);
     }
 
-    const ToggleReviews = () => {
+    const toggleReviews = () => {
         setShowCast(false);
         setShowReviews(true);
     }
 
-    const img = "https://dl-media.viber.com/10/share/2/long/vibes/icon/image/0x0/95e0/5688fdffb84ff8bed4240bcf3ec5ac81ce591d9fa9558a3a968c630eaba195e0.jpg";
+    const defaultImg = 'https://dl-media.viber.com/10/share/2/long/vibes/icon/image/0x0/95e0/5688fdffb84ff8bed4240bcf3ec5ac81ce591d9fa9558a3a968c630eaba195e0.jpg';
+
     return (
-        <div>
+        <>
+            
             <BackLink to={backLinkHref.current}></BackLink>
-            {isLoading && <Loader />}
-            {error && <ErrorMessage />}
-            <img src={poster_path ? (`https://image.tmdb.org/t/p/w500/${poster_path}`) : img} alt={title} />
-            <h2>{title}</h2>
-            <p>User score: {vote_average}</p>
-            <h2>Overview</h2>
-            <p>{overview}</p>
-            <h2>Genres</h2>
-         {genres && genres.length > 0 ? (
-    <ul>
-        {genres.map(genre => 
-            <li key={genre.id}>{genre.name}</li>
-        )}
-    </ul>
-) : (
-    <p>Here is no information</p>
-)}
-            <div>
-                <h2>Additional Information</h2>
+            
+            <main>
+                {isLoading && <Loader />}
+                {error && <ErrorMessage />}
+                <div>
+                    <img src={
+                        poster_path ?
+                            (`https://image.tmdb.org/t/p/w500/${poster_path}`) :
+                            defaultImg
+                    } alt={title} />
+                </div>
+                <div>
+                    <h2>{title}</h2>
+                    <p>User Score: {vote_average}</p>
+                    <h3>Overview</h3>
+                    <p>{overview}</p>
+                    <h3>Genres</h3>
+                    {genres && genres.length > 0 ? (
+                        <ul>
+                            {genres.map(genre =>
+                                <li key={genre.id}>{genre.name}</li>
+                            )}
+                        </ul>
+                    ) : (
+                        <p>Here is no information</p>
+                    )}
+                </div>
+                <h4>Additional information</h4>
                 <ul>
                     <li>
-                        <Link to ={`/movies/${id}/cast`} onClick={ToggleCast} >Cast</Link>
+                        <Link to={`/movies/${id}/cast`} onClick={toggleCast}>Cast</Link>
                     </li>
                     <li>
-                        <Link to ={`/movies/${id}/reviews`} onClick={ToggleReviews}>Reviews</Link>
+                        <Link to={`/movies/${id}/reviews`} onClick={toggleReviews}>Review</Link>
                     </li>
                 </ul>
-            </div>
-            <Suspense>
-                <Outlet/>
-            </Suspense>
-            {showCast && <MovieCast movieId={id} />}
-            {showReviews && <MovieReviews movieId={id} />}
-        </div>
-
+                <Suspense>
+                    <Outlet />
+                </Suspense>
+                {showCast && <MovieCast movieId={id} />}
+                {showReviews && <MovieReviews movieId={id} />}
+            </main>
+        </>
     )
 }
-
