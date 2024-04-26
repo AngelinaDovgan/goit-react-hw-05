@@ -1,0 +1,16 @@
+.list {
+    list-style: none;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.item {
+    border: 1px solid green;
+    padding: 18px;
+}
+
+.icon {
+    fill: green;
+}

@@ -6,6 +6,7 @@ import MovieList from "../../components/MovieList/MovieList";
 import Loader from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/EM/EM";
 import LoadMoreBtn from "../../components/LoadMoreBtn/LoadMoreBtn";
+import css from './MoviesPage.module.css';
 
 export default function MoviesPage() {
     const [movies, setMovies] = useState([]);
@@ -58,10 +59,10 @@ export default function MoviesPage() {
 
     return (
         <div>
-            <p>Movies Page</p>
+            <h2 className={css.title}>Movies Page</h2>
             <MovieFilter onSearch={onHandleSubmit} />
             {movies.length > 0 && <MovieList movies={movies} />}
-            {isVisible && <LoadMoreBtn onClick={handleClick} disabled={isLoading}>isLoading ? 'loading' :'loadmore'</LoadMoreBtn>}
+            {isVisible && <LoadMoreBtn onClick={handleClick} disabled={isLoading}></LoadMoreBtn>}
             {!movies.length && !isEmpty && <p>Let's begin!</p>}
             {isLoading && <Loader />}
             {error && <ErrorMessage />}

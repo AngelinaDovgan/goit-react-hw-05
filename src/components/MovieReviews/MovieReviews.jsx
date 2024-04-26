@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import { fetchMovieReview } from "../../../movies-api";
 import Loader from "../Loader/Loader";
 import ErrorMessage from "../EM/EM";
-
+import { FaUserEdit } from "react-icons/fa";
+import { MdOutlineRateReview } from "react-icons/md";
+import css from './MovieReviews.module.css';
 
 export default function MovieReviews({ movieId }) {
     const [isloading, setIsLoading] = useState(false);
@@ -36,11 +38,11 @@ export default function MovieReviews({ movieId }) {
         <div>
             {isloading && <Loader />}
             {error && <ErrorMessage/>}
-            <ul>
+            <ul className={css.list}>
                 {movieReviews.map((item) => (
-                    <li key={item.id}>
-                        <p>Author: {item.author}</p>
-                        <p>{item.content}</p>
+                    <li key={item.id} className={css.item}>
+                       <h3> <FaUserEdit className={css.icon} /> Author: {item.author}</h3>
+                        <p> <MdOutlineRateReview className={css.icon} /> {item.content}</p>
                     </li>
                 ))}
             </ul>
