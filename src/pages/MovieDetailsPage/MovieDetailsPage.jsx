@@ -30,7 +30,7 @@ export default function MovieDetailsPage() {
     const backLinkHref = useRef(location.state ?? "/movies")
 
     useEffect(() => {
-        // if (!movieId) return;
+        if (!movieId) return;
 
         async function fetchDetails() {
             try {

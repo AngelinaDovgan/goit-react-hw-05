@@ -1,0 +1,16 @@
+.nav {
+display: flex;
+gap: 25px;
+justify-content: center;
+margin-bottom: 50px;
+color: black;
+text-decoration: none;
+}
+
+.active {
+    background-color: green;
+    padding: 15px;
+    border-radius: 2px;
+    color: white;
+    text-decoration: none;
+}
