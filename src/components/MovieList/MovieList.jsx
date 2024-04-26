@@ -7,8 +7,7 @@ export default function MovieList({ movies }) {
         <div>
             <ul>
                 {movies && movies.map((movie) => (
-                    <li>
-                        key={nanoid()}
+                    <li key={nanoid()}>
                         <Link to={`/movies/${movie.id}`} state={location} >
                             {movie.title}
                         </Link>

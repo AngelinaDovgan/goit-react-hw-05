@@ -24,9 +24,8 @@ export default function MovieFilter({ onSearch }) {
             placeholder="Type here..."
             autoComplete="off"
             autoFocus
-            // className={css.field}
           />
-          <button type="submit" className={css.btn}>Click to start!</button>
+          <button type="submit">Click to start!</button>
         </Form>
 </Formik>
         </div>

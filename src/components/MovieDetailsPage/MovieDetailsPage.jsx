@@ -51,8 +51,6 @@ export default function MovieDetailsPage() {
             <p>{overview}</p>
             <h2>Genres</h2>
             <p>{genres}</p>
-
-            
         </div>
     )
 

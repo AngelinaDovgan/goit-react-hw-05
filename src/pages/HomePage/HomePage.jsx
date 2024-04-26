@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import MovieList from "../../components/MovieList/MovieList";
 import LoadMoreBtn from "../../components/LoadMoreBtn/LoadMoreBtn";
 
@@ -18,7 +18,7 @@ export default function HomePage() {
   useEffect(() => {
     
     const TrendMovies = async () => {
-      setIsLoading(true);
+      // setIsLoading(true);
       
       try {
         const { results, total_page } = await fetchTrendMovies(page);
@@ -27,7 +27,7 @@ export default function HomePage() {
           return;
         }
         setMovies((prevMovie) => {
-          return [...prevMovie, ...data];
+          return [...prevMovie, ...results];
         });
       } catch (error) {
         setError(true);
